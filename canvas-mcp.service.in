@@ -7,10 +7,11 @@ StartLimitBurst=5
 
 [Service]
 Type=simple
-WorkingDirectory=/home/tnitish
-Environment=HOME=/home/tnitish
-Environment=PATH=/usr/local/bin:/usr/bin:/bin
-ExecStart=/usr/bin/python3 /home/tnitish/srv/canvas-mcp/mcp_tool_filter.py --host 127.0.0.1 --port 8085 --origin-port 8086 --log-level info
+WorkingDirectory=@PROJECT_DIR@
+Environment=HOME=%h
+Environment=PATH=/usr/local/bin:/usr/bin:/bin:%h/.local/bin
+EnvironmentFile=-@ENVIRONMENT_FILE@
+ExecStart=@PROJECT_DIR@/run-server.sh
 Restart=on-failure
 RestartSec=5s
 TimeoutStopSec=15s
@@ -22,7 +23,7 @@ NoNewPrivileges=yes
 PrivateTmp=yes
 ProtectSystem=full
 ProtectHome=read-only
-ReadWritePaths=/home/tnitish/.canvas-cli /home/tnitish/.cache/canvas-cli
+ReadWritePaths=%h/.canvas-cli %h/.cache/canvas-cli
 RestrictSUIDSGID=yes
 LockPersonality=yes
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6

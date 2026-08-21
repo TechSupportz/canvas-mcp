@@ -13,6 +13,7 @@ import http.client
 import json
 from pathlib import Path
 import signal
+import shutil
 import socket
 import subprocess
 import sys
@@ -259,7 +260,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--port", type=int, default=8085)
     parser.add_argument("--origin-port", type=int, default=8086)
     parser.add_argument("--allowlist", type=Path, default=here / "allowed-tools.txt")
-    parser.add_argument("--canvas", default="/usr/local/bin/canvas")
+    parser.add_argument("--canvas", default=shutil.which("canvas") or "canvas")
     parser.add_argument("--log-level", default="info")
     return parser.parse_args()
 
