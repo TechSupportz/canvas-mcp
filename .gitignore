@@ -1,0 +1,19 @@
+# Local Codex/agent workspace metadata
+.agents/
+.codex/
+
+# Python caches and test output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Generated Canvas MCP exports
+mcp-tools.json

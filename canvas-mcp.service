@@ -1,0 +1,31 @@
+[Unit]
+Description=Canvas Streamable HTTP MCP Server
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=/home/tnitish
+Environment=HOME=/home/tnitish
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 /home/tnitish/srv/canvas-mcp/mcp_tool_filter.py --host 127.0.0.1 --port 8085 --origin-port 8086 --log-level info
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=15s
+UMask=0077
+
+# Keep the process constrained while allowing Canvas CLI to read its existing
+# credentials and update only its own cache/state directories.
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=/home/tnitish/.canvas-cli /home/tnitish/.cache/canvas-cli
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=default.target

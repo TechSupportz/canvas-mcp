@@ -1,0 +1,15 @@
+# Canvas tools exposed to the Notion coursework workflow.
+# Keep one exact MCP tool name per line. Blank lines and comments are ignored.
+canvas_users_me
+canvas_courses_list
+canvas_courses_get
+canvas_assignments_list
+canvas_assignments_get
+canvas_planner_items
+canvas_users_todo
+canvas_users_upcoming-events
+canvas_calendar_list
+canvas_calendar_get
+canvas_submissions_get
+canvas_announcements_list
+canvas_announcements_get
