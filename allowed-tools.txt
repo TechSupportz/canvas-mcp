@@ -13,3 +13,9 @@ canvas_calendar_get
 canvas_submissions_get
 canvas_announcements_list
 canvas_announcements_get
+canvas_files_list
+canvas_files_get
+canvas_files_download
+canvas_folders_list
+canvas_folders_get
+canvas_folders_resolve-path
